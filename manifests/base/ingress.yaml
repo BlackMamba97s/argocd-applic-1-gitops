@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-applic-1
+  namespace: argocd
+  labels:
+    app: argocd-applic-1
+    app.kubernetes.io/component: backstage
+    backstage.io/kubernetes-id: argocd
+spec:
+  - host: argocd-server.argocd.svc
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: argocd-applic-1
+              port:
+                number: 80

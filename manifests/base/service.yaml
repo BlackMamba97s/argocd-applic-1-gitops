@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: argocd-applic-1
+  labels:
+    app: argocd-applic-1
+    app.kubernetes.io/component: backstage
+    backstage.io/kubernetes-id: argocd
+spec:
+  ports:
+    - name: http-80
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: argocd-applic-1
